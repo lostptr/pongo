@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/stock.png" type="Texture" id=1]
+
+[node name="StockTexture" type="TextureRect"]
+anchor_right = 0.025
+anchor_bottom = 0.038
+margin_bottom = 0.0959997
+rect_min_size = Vector2( 6, 6 )
+texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

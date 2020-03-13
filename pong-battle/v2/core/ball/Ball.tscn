@@ -7,13 +7,16 @@
 bounce = 10.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 3.2984
+radius = 7.0
 
 [node name="Ball" type="RigidBody2D"]
-mode = 2
+collision_layer = 0
+collision_mask = 5
 mass = 0.25
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
 script = ExtResource( 2 )
 initial_force = 100
 

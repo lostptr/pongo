@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/forced square/forced_square.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/forced square/forced_square_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://v2/ui/playerUI/PlayerUI.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_right = 16
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -1, 1 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 3.0
+content_margin_right = 1.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "hit"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 7 ), Vector2( 6, 1 ), Vector2( -4, 1 ), Vector2( 2, 6 ), Vector2( 0, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_colors/font_color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.341176, 0.121569, 0.121569, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PlayerUI" type="MarginContainer"]
+anchor_right = 0.137
+anchor_bottom = 0.129
+margin_left = -0.101212
+margin_top = -0.0800002
+margin_right = -43.9812
+margin_bottom = -26.824
+custom_constants/margin_right = -12
+custom_constants/margin_top = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="."]
+margin_top = 4.0
+margin_right = 56.0
+margin_bottom = 27.0
+custom_constants/separation = 0
+
+[node name="PlayerName" type="MarginContainer" parent="Container"]
+margin_right = 25.0
+margin_bottom = 23.0
+custom_constants/margin_top = 2
+custom_constants/margin_bottom = 4
+
+[node name="BoxColor" type="Panel" parent="Container/PlayerName"]
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 10, 10 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="Name" type="Label" parent="Container/PlayerName"]
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 19.0
+size_flags_vertical = 1
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "P1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="VBoxContainer" parent="Container"]
+margin_left = 25.0
+margin_right = 56.0
+margin_bottom = 23.0
+custom_constants/separation = 1
+
+[node name="BoostBar" type="ProgressBar" parent="Container/Stats"]
+margin_right = 31.0
+margin_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+max_value = 10.0
+value = 10.0
+percent_visible = false
+
+[node name="Perc" type="Label" parent="Container/Stats"]
+margin_top = 2.0
+margin_right = 31.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "38.4%"
+
+[node name="PercAnimation" type="AnimationPlayer" parent="Container/Stats/Perc"]
+anims/hit = SubResource( 5 )
+
+[node name="StockContainer" type="HBoxContainer" parent="Container/Stats"]
+margin_top = 12.0
+margin_right = 31.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+custom_constants/separation = 0
