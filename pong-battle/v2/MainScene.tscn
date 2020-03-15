@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://v2/core/TileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://sprites/sprites.png" type="Texture" id=2]
@@ -7,9 +7,444 @@
 [ext_resource path="res://v2/ui/playerUI/PlayerUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://v2/core/safeArea/SafeArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://v2/MainScene.gd" type="Script" id=7]
+[ext_resource path="res://fonts/forced square/forced_square_big.tres" type="DynamicFont" id=8]
+[ext_resource path="res://fonts/forced square/forced_square_small.tres" type="DynamicFont" id=9]
+[ext_resource path="res://theme/MainTheme.tres" type="Theme" id=10]
+[ext_resource path="res://sfx/go.wav" type="AudioStream" id=11]
+[ext_resource path="res://sfx/ready.wav" type="AudioStream" id=12]
+[ext_resource path="res://sfx/game.wav" type="AudioStream" id=13]
+[ext_resource path="res://music/BattleTheme.ogg" type="AudioStream" id=14]
+[ext_resource path="res://v2/core/camera/MyCamera.tscn" type="PackedScene" id=15]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0.784314 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_results"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GameSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../BattleMusic:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ReadyLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GoLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ReadyLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GoLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.19, 1.56 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GoLabel:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.16, 1.26, 1.36, 1.46 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20, 67 ), Vector2( 20, 97 ), Vector2( 5, 77 ), Vector2( 0, 82 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.16 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "enable_movement"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ReadySFX:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("GoSFX:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.18 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MatchResults/Background:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MatchResults/WinnerTextContainer/SmallText:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MatchResults/WinnerTextContainer/WinnerName:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MatchResults/WinnerTextContainer/WinnerName:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MatchResults/TryAgainButton:rect_position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.6, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 323, 179 ), Vector2( 207, 179 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("GameLabel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MatchResults/TryAgainButton:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="MainScene" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 7 )
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -20.0
+autoplay = true
+bus = "Music"
+
+[node name="SlowMoTween" type="Tween" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Player1UI" parent="GUI" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -67.0
+margin_top = 4.0
+margin_right = 9.0
+margin_bottom = 31.0
+
+[node name="Player2UI" parent="GUI" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.37656
+margin_top = 4.30299
+margin_right = 63.3766
+margin_bottom = 26.303
+
+[node name="MatchUI" type="MarginContainer" parent="GUI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReadyLabel" type="Label" parent="GUI/MatchUI"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 87.0
+margin_right = 320.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 8 )
+text = "READY?"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="GoLabel" type="Label" parent="GUI/MatchUI"]
+visible = false
+modulate = Color( 1, 1, 1, 0.972973 )
+margin_top = 87.0
+margin_right = 320.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 8 )
+text = "GO!"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="GameLabel" type="Label" parent="GUI/MatchUI"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 87.0
+margin_right = 320.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 8 )
+text = "game!"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="MatchResults" type="Control" parent="GUI/MatchUI"]
+margin_right = 320.0
+margin_bottom = 208.0
+
+[node name="Background" type="ColorRect" parent="GUI/MatchUI/MatchResults"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinnerTextContainer" type="VBoxContainer" parent="GUI/MatchUI/MatchResults"]
+anchor_left = 0.328
+anchor_top = 0.562
+anchor_right = 1.0
+anchor_bottom = 0.808
+margin_left = 0.0399933
+margin_top = 0.103989
+margin_bottom = -0.0640106
+custom_constants/separation = 8
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SmallText" type="Label" parent="GUI/MatchUI/MatchResults/WinnerTextContainer"]
+margin_right = 215.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 9 )
+text = "And the winner is..."
+valign = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinnerName" type="Label" parent="GUI/MatchUI/MatchResults/WinnerTextContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.2 )
+margin_top = 17.0
+margin_right = 215.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 8 )
+text = "Player 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TryAgainButton" type="Button" parent="GUI/MatchUI/MatchResults"]
+visible = false
+anchor_left = 0.647
+anchor_top = 0.861
+anchor_right = 1.003
+anchor_bottom = 0.957
+margin_left = 115.96
+margin_top = -0.0879974
+margin_right = 116.04
+margin_bottom = -0.0559845
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = ExtResource( 9 )
+text = "Try again >>>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/MatchUI"]
+autoplay = "init"
+anims/end_game = SubResource( 4 )
+anims/init = SubResource( 5 )
+anims/show_results = SubResource( 6 )
+
+[node name="ReadySFX" type="AudioStreamPlayer" parent="GUI/MatchUI"]
+pause_mode = 2
+stream = ExtResource( 12 )
+bus = "Voice"
+
+[node name="GoSFX" type="AudioStreamPlayer" parent="GUI/MatchUI"]
+pause_mode = 2
+stream = ExtResource( 11 )
+pitch_scale = 1.1
+bus = "Voice"
+
+[node name="GameSFX" type="AudioStreamPlayer" parent="GUI/MatchUI"]
+pause_mode = 2
+stream = ExtResource( 13 )
+bus = "Voice"
 
 [node name="Backgound" type="Sprite" parent="."]
 position = Vector2( 160, 104 )
@@ -64,29 +499,8 @@ position = Vector2( 80, 100 )
 contacts_reported = 1
 contact_monitor = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 158, 105 )
-current = true
-smoothing_enabled = true
-
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="Player1UI" parent="GUI" instance=ExtResource( 5 )]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -67.0
-margin_top = 4.0
-margin_right = 9.0
-margin_bottom = 31.0
-
-[node name="Player2UI" parent="GUI" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 7.37656
-margin_top = 4.30299
-margin_right = 63.3766
-margin_bottom = 26.303
+[node name="MyCamera" parent="." instance=ExtResource( 15 )]
+[connection signal="pressed" from="GUI/MatchUI/MatchResults/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 [connection signal="defeated" from="Player1" to="." method="_on_Player1_defeated"]
 [connection signal="initialized" from="Player1" to="GUI/Player1UI" method="_on_Player_initialized"]
 [connection signal="stat_changed" from="Player1" to="GUI/Player1UI" method="_on_Player_stat_changed"]

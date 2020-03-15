@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/game.wav-73207f22b5fb243c11f979097eb260c5.sample"
+
+[deps]
+
+source_file="res://sfx/game.wav"
+dest_files=[ "res://.import/game.wav-73207f22b5fb243c11f979097eb260c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

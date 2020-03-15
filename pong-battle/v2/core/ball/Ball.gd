@@ -1,6 +1,9 @@
 extends RigidBody2D
 
 export var initial_force = 200
+
+onready var beep_sfx: AudioStreamPlayer = $BounceSFX
+
 #
 #func _ready():
 #	randomize()
@@ -11,3 +14,7 @@ func get_random_dir() -> Vector2:
 
 #func _integrate_forces(state: Physics2DDirectBodyState):
 #	pass
+
+
+func _on_Ball_body_entered(body):
+	beep_sfx.play()
