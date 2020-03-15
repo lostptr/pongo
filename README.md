@@ -6,4 +6,5 @@ A short local-multiplayer game made in godot!
 ## Credits
 
 Sound Effects:
-- Iwan Gabovitch [(qubodup)](https://opengameart.org/users/qubodup) 
+- [Iwan Gabovitch (qubodup)](https://opengameart.org/users/qubodup) 
+- [Unnamed](https://opengameart.org/users/unnamed)
