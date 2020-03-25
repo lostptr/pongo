@@ -12,3 +12,4 @@ Music:
 Sound Effects:
 - [Iwan Gabovitch (qubodup)](https://opengameart.org/users/qubodup) 
 - [Unnamed](https://opengameart.org/users/unnamed)
+- [Lamoot](https://opengameart.org/users/lamoot)
