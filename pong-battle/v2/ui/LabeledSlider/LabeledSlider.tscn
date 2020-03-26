@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://theme/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://v2/ui/LabeledSlider/LabeledSlider.gd" type="Script" id=2]
+
+[node name="LabeledSlider" type="HBoxContainer"]
+anchor_right = 0.419
+anchor_bottom = 0.048
+margin_right = -0.0800171
+margin_bottom = 0.0159998
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slider" type="HSlider" parent="."]
+margin_right = 109.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+value = 50.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 113.0
+margin_right = 133.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 20, 0 )
+theme = ExtResource( 1 )
+text = "100"
+align = 2
+[connection signal="value_changed" from="Slider" to="." method="_on_Slider_value_changed"]

@@ -18,7 +18,7 @@ export var boost_duration: float = 10.0
 export var boost: float = boost_duration setget set_boost
 export var move_force = 100
 export var rotation_force = 200
-export var multiplier = 3
+export var multiplier = 4
 
 onready var respawn_timer: Timer = $RespawnTimer
 onready var spawn_position: Vector2 = self.global_position
@@ -121,12 +121,9 @@ func apply_knockback(velocity: Vector2):
 	var mul = (10 * (perc / 100.0)) + 5
 	var knockback = velocity.rotated(deg2rad(180)) * mul
 	var strength = get_hit_strength(knockback)
-	play_hit_sfx(strength)
-	
+	play_hit_fx(strength)
 	if strength == HitStrength.FINAL:
-		Globals.camera.close_in(self.global_position)
-#		yield(Globals.camera, "close_ended")
-		self.add_central_force(knockback)
+		self.add_central_force(knockback * 2)
 	else:
 		self.add_central_force(knockback)
 
@@ -171,14 +168,17 @@ func get_hit_strength(knockback: Vector2) -> int:
 	else: 
 		return HitStrength.WEAK
 
-func play_hit_sfx(hit_strength: int):
+func play_hit_fx(hit_strength: int):
 	match hit_strength:
 		HitStrength.FINAL:
 			self.sfx_hit_final.play()
+			Globals.camera.close_in(self.global_position)
 		HitStrength.STRONG:
 			self.sfx_hit_strong.play()
+			Globals.camera.shake(0.3, 15, 12)
 		HitStrength.MEDIUM:
 			self.sfx_hit_medium.play()
+			Globals.camera.shake(0.2, 15, 8)
 		HitStrength.WEAK:
 			self.sfx_hit_weak.play()
 	

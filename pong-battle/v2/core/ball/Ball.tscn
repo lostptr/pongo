@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://sprites/sprites.png" type="Texture" id=1]
+[ext_resource path="res://sprites/sphere.png" type="Texture" id=1]
 [ext_resource path="res://v2/core/ball/Ball.gd" type="Script" id=2]
 [ext_resource path="res://sfx/beep.wav" type="AudioStream" id=3]
 
@@ -30,11 +30,8 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 offset = Vector2( 0.5, 0.5 )
-vframes = 4
-hframes = 4
-frame = 2
 
 [node name="BounceSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 3 )
-volume_db = -20.0
+bus = "BallBounce"
 [connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]

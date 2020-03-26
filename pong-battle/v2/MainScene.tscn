@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://v2/core/TileMap.tres" type="TileSet" id=1]
-[ext_resource path="res://sprites/sprites.png" type="Texture" id=2]
+[ext_resource path="res://sprites/background.png" type="Texture" id=2]
 [ext_resource path="res://v2/core/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://v2/core/ball/Ball.tscn" type="PackedScene" id=4]
 [ext_resource path="res://v2/ui/playerUI/PlayerUI.tscn" type="PackedScene" id=5]
@@ -13,16 +13,23 @@
 [ext_resource path="res://sfx/go.wav" type="AudioStream" id=11]
 [ext_resource path="res://sfx/ready.wav" type="AudioStream" id=12]
 [ext_resource path="res://sfx/game.wav" type="AudioStream" id=13]
-[ext_resource path="res://music/BattleTheme.ogg" type="AudioStream" id=14]
+[ext_resource path="res://music/battle_theme.ogg" type="AudioStream" id=14]
 [ext_resource path="res://v2/core/camera/MyCamera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://v2/ui/BlackBackground/BlackBackground.tscn" type="PackedScene" id=16]
+[ext_resource path="res://textures/looser.png" type="Texture" id=17]
+[ext_resource path="res://textures/winner.png" type="Texture" id=18]
+[ext_resource path="res://textures/crown.png" type="Texture" id=19]
+[ext_resource path="res://music/end_level.ogg" type="AudioStream" id=20]
+[ext_resource path="res://v2/effects/drop shadow/DropShadow.tscn" type="PackedScene" id=21]
+[ext_resource path="res://menus/PauseMenu/PauseMenu.tscn" type="PackedScene" id=22]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.588235 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.784314 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 0.392157 )
 
 [sub_resource type="Animation" id=4]
@@ -252,7 +259,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 1.6, 1.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 323, 179 ), Vector2( 207, 179 ) ]
+"values": [ Vector2( 323, 49 ), Vector2( 207, 49 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("GameLabel:visible")
@@ -277,6 +284,90 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MatchResults/WinnerTex:rect_position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -121.321, 214.615 ), Vector2( 16.7532, 92.8006 ), Vector2( 14.7019, 26.4634 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MatchResults/WinnerTex:rect_rotation")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -15.0, 345.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MatchResults/CrownTex:rect_position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1, 1.4, 1.6, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -59.6001, 252.369 ), Vector2( 91.7342, 126.49 ), Vector2( 75.008, 57.745 ), Vector2( 63.1201, 12.3546 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MatchResults/LooserTex:rect_position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -172.9, 119.7 ), Vector2( -23.7501, 141.55 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("MatchResults/MainMenuButton:rect_position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 327, 79 ), Vector2( 227, 79 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("MatchResults/MainMenuButton:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("VictoryFanfare:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="MainScene" type="Node2D"]
@@ -342,6 +433,7 @@ valign = 1
 uppercase = true
 
 [node name="GameLabel" type="Label" parent="GUI/MatchUI"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 87.0
 margin_right = 320.0
@@ -392,7 +484,7 @@ __meta__ = {
 
 [node name="WinnerName" type="Label" parent="GUI/MatchUI/MatchResults/WinnerTextContainer"]
 visible = false
-modulate = Color( 1, 1, 1, 0.2 )
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 17.0
 margin_right = 215.0
 margin_bottom = 51.0
@@ -407,19 +499,87 @@ __meta__ = {
 [node name="TryAgainButton" type="Button" parent="GUI/MatchUI/MatchResults"]
 visible = false
 anchor_left = 0.647
-anchor_top = 0.861
-anchor_right = 1.003
-anchor_bottom = 0.957
+anchor_top = 0.236
+anchor_right = 1.0
+anchor_bottom = 0.332
 margin_left = 115.96
 margin_top = -0.0879974
-margin_right = 116.04
+margin_right = 117.0
 margin_bottom = -0.0559845
 theme = ExtResource( 10 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 9 )
-text = "Try again >>>"
+text = "Try again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton" type="Button" parent="GUI/MatchUI/MatchResults"]
+visible = false
+anchor_left = 0.709
+anchor_top = 0.38
+anchor_right = 1.003
+anchor_bottom = 0.476
+margin_left = 100.12
+margin_top = -0.0400009
+margin_right = 100.04
+margin_bottom = -0.00799561
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 9 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrownTex" type="TextureRect" parent="GUI/MatchUI/MatchResults"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -59.6001
+margin_top = 252.369
+margin_right = -341.6
+margin_bottom = 75.3696
+rect_rotation = -14.2
+rect_pivot_offset = Vector2( 19, 15 )
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinnerTex" type="TextureRect" parent="GUI/MatchUI/MatchResults"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -121.321
+margin_top = 214.615
+margin_right = -276.321
+margin_bottom = 110.615
+rect_rotation = -15.0
+rect_pivot_offset = Vector2( 88, 49 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LooserTex" type="TextureRect" parent="GUI/MatchUI/MatchResults"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -172.9
+margin_top = 119.7
+margin_right = -337.9
+margin_bottom = 5.70032
+rect_rotation = 8.0
+rect_pivot_offset = Vector2( 77, 47 )
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -446,13 +606,15 @@ pause_mode = 2
 stream = ExtResource( 13 )
 bus = "Voice"
 
+[node name="VictoryFanfare" type="AudioStreamPlayer" parent="GUI/MatchUI"]
+stream = ExtResource( 20 )
+bus = "Music"
+
+[node name="PauseMenu" parent="GUI" instance=ExtResource( 22 )]
+
 [node name="Backgound" type="Sprite" parent="."]
 position = Vector2( 160, 104 )
-scale = Vector2( 26, 17 )
 texture = ExtResource( 2 )
-vframes = 4
-hframes = 4
-frame = 5
 
 [node name="SafeArea" parent="." instance=ExtResource( 6 )]
 
@@ -462,7 +624,22 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 2
 format = 1
-tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 1, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 2, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 1, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 1, 0, 5, 2, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 2, 0, 12, 0, 0, 13, 2, 0, 14, 1, 0, 15, 0, 0, 16, 1, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 131071, 0, 0, 65536, 0, 0, 65555, 0, 0, 65556, 1, 0, 196607, 0, 0, 131072, 0, 0, 131091, 2, 0, 131092, 1, 0, 262143, 1, 0, 196608, 0, 0, 196627, 2, 0, 196628, 1, 0, 327679, 0, 0, 262144, 1, 0, 262163, 2, 0, 262164, 0, 0, 393215, 0, 0, 327680, 0, 0, 327699, 2, 0, 327700, 0, 0, 458751, 1, 0, 393216, 0, 0, 393235, 1, 0, 393236, 2, 0, 524287, 1, 0, 458752, 0, 0, 458771, 1, 0, 458772, 0, 0, 589823, 1, 0, 524288, 1, 0, 524307, 2, 0, 524308, 1, 0, 655359, 0, 0, 589824, 1, 0, 589843, 0, 0, 589844, 1, 0, 720895, 1, 0, 655360, 0, 0, 655379, 2, 0, 655380, 0, 0, 786431, 1, 0, 720896, 0, 0, 720915, 2, 0, 720916, 0, 0, 851967, 1, 0, 786432, 1, 0, 786433, 0, 0, 786434, 0, 0, 786435, 1, 0, 786436, 0, 0, 786437, 2, 0, 786438, 0, 0, 786439, 1, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 1, 0, 786445, 1, 0, 786446, 2, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 917503, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 2, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0 )
+tile_data = PoolIntArray( -1, 9, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 0, -65525, 9, 0, -65524, 9, 0, -65523, 9, 0, -65522, 9, 0, -65521, 9, 0, -65520, 9, 0, -65519, 9, 0, -65518, 9, 0, -65517, 9, 0, -65516, 9, 0, 65535, 9, 0, 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 2, 0, 20, 9, 0, 131071, 9, 0, 65536, 7, 0, 65555, 3, 0, 65556, 9, 0, 196607, 9, 0, 131072, 7, 0, 131091, 3, 0, 131092, 9, 0, 262143, 9, 0, 196608, 7, 0, 196627, 3, 0, 196628, 9, 0, 327679, 9, 0, 262144, 7, 0, 262163, 3, 0, 262164, 9, 0, 393215, 9, 0, 327680, 7, 0, 327699, 3, 0, 327700, 9, 0, 458751, 9, 0, 393216, 7, 0, 393235, 3, 0, 393236, 9, 0, 524287, 9, 0, 458752, 7, 0, 458771, 3, 0, 458772, 9, 0, 589823, 9, 0, 524288, 7, 0, 524307, 3, 0, 524308, 9, 0, 655359, 9, 0, 589824, 7, 0, 589843, 3, 0, 589844, 9, 0, 720895, 9, 0, 655360, 7, 0, 655379, 3, 0, 655380, 9, 0, 786431, 9, 0, 720896, 7, 0, 720915, 3, 0, 720916, 9, 0, 851967, 9, 0, 786432, 6, 0, 786433, 5, 0, 786434, 5, 0, 786435, 5, 0, 786436, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0, 786440, 5, 0, 786441, 5, 0, 786442, 5, 0, 786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 4, 0, 786452, 9, 0, 917503, 9, 0, 851968, 9, 0, 851969, 9, 0, 851970, 9, 0, 851971, 9, 0, 851972, 9, 0, 851973, 9, 0, 851974, 9, 0, 851975, 9, 0, 851976, 9, 0, 851977, 9, 0, 851978, 9, 0, 851979, 9, 0, 851980, 9, 0, 851981, 9, 0, 851982, 9, 0, 851983, 9, 0, 851984, 9, 0, 851985, 9, 0, 851986, 9, 0, 851987, 9, 0, 851988, 9, 0 )
+
+[node name="BlackBackground" parent="." instance=ExtResource( 16 )]
+position = Vector2( 160.54, 104.46 )
+
+[node name="DropShadow" parent="." instance=ExtResource( 21 )]
+shadow_caster_path = NodePath("../Player1")
+
+[node name="DropShadow2" parent="." instance=ExtResource( 21 )]
+shadow_caster_path = NodePath("../Player2")
+
+[node name="DropShadow3" parent="." instance=ExtResource( 21 )]
+shadow_caster_path = NodePath("../Ball1")
+
+[node name="DropShadow4" parent="." instance=ExtResource( 21 )]
+shadow_caster_path = NodePath("../Ball2")
 
 [node name="Player1" parent="." groups=[
 "player1",
@@ -501,6 +678,7 @@ contact_monitor = true
 
 [node name="MyCamera" parent="." instance=ExtResource( 15 )]
 [connection signal="pressed" from="GUI/MatchUI/MatchResults/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
+[connection signal="pressed" from="GUI/MatchUI/MatchResults/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="defeated" from="Player1" to="." method="_on_Player1_defeated"]
 [connection signal="initialized" from="Player1" to="GUI/Player1UI" method="_on_Player_initialized"]
 [connection signal="stat_changed" from="Player1" to="GUI/Player1UI" method="_on_Player_stat_changed"]

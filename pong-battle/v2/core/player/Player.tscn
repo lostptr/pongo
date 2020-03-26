@@ -119,21 +119,25 @@ one_shot = true
 pause_mode = 2
 stream = SubResource( 5 )
 stream_paused = true
+bus = "SFX"
 
 [node name="HitMedium" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = SubResource( 6 )
 stream_paused = true
+bus = "SFX"
 
 [node name="HitStrong" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = SubResource( 7 )
 stream_paused = true
+bus = "SFX"
 
 [node name="HitFinal" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
 stream_paused = true
+bus = "SFX"
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_RespawnTimer_timeout"]

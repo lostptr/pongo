@@ -1,20 +1,47 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=15 format=2]
 
 [ext_resource path="res://fonts/forced square/forced_square.tres" type="DynamicFont" id=1]
 [ext_resource path="res://fonts/forced square/forced_square_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/forced square/forced_square.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sprites/box.png" type="Texture" id=4]
+[ext_resource path="res://sprites/slider_grabbed.png" type="Texture" id=5]
+[ext_resource path="res://sprites/slider_normal.png" type="Texture" id=6]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 15
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 0.168627 )
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.435294, 0.435294, 0.435294, 1 )
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.784314, 0.784314, 0.784314, 1 )
 border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.92549, 0.937255, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_bottom = 2.0
 
 [resource]
 default_font = ExtResource( 2 )
@@ -23,12 +50,12 @@ Button/colors/font_color_disabled = Color( 1, 1, 1, 1 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = SubResource( 1 )
-Button/styles/focus = SubResource( 2 )
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 4 )
-Button/styles/pressed = SubResource( 3 )
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = SubResource( 2 )
+Button/styles/focus = SubResource( 3 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 4 )
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -145,12 +172,12 @@ HScrollBar/styles/scroll = null
 HScrollBar/styles/scroll_focus = null
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = null
-HSlider/icons/grabber = null
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = null
-HSlider/icons/tick = null
-HSlider/styles/grabber_area = null
-HSlider/styles/slider = null
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_disabled = ExtResource( 4 )
+HSlider/icons/grabber_highlight = ExtResource( 5 )
+HSlider/icons/tick = ExtResource( 4 )
+HSlider/styles/grabber_area = SubResource( 6 )
+HSlider/styles/slider = SubResource( 7 )
 HSplitContainer/constants/autohide = 1
 HSplitContainer/constants/separation = 12
 HSplitContainer/icons/grabber = null
@@ -226,7 +253,7 @@ OptionButton/styles/focus = null
 OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
-Panel/styles/panel = null
+Panel/styles/panel = SubResource( 8 )
 PanelContainer/styles/panel = null
 PopupDialog/styles/panel = null
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )

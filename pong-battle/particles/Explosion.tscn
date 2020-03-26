@@ -21,10 +21,12 @@ scale_amount = 5.0
 script = ExtResource( 1 )
 
 [node name="AutoDestroyTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+bus = "SFX"
 [connection signal="timeout" from="AutoDestroyTimer" to="." method="_on_AutoDestroyTimer_timeout"]
